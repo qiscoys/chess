@@ -1,0 +1,69 @@
+@import "var";
+@import "mixin";
+.box{
+  width: $w;
+  height: $w;
+  @include center;
+  background: #58c6de;
+}
+.chess{
+  width: 2 * $r;
+  height: 2 * $r;
+  border-radius: 50%;
+  float: left;
+  position: relative;
+  z-index: 999;
+}
+.black{
+  background: black;
+}
+.white{
+  background: white;
+}
+.hang {
+  width: $w - $r * 2;
+  height: 1px;
+  background: #030405;
+  position: absolute;
+  left: $r;
+  transform: translate3d(-300%,0,0);
+  animation: through 1s 1 ease-in forwards;
+}
+.shu {
+  height: $w -$r *2;
+  width: 1px;
+  background: #030405;
+  position: absolute;
+  top: $r;
+  transform: translate3d(0,-300%,0);
+  animation: down 1s 1 ease-in forwards;
+}
+//i:nth-of-type(1)
+
+@for $i from 1 through 15{
+  .hang:nth-of-type(#{$i}){
+    top: (2*$i - 1)* $r;
+    animation-delay: 100ms * $i;
+}
+  .shu:nth-of-type(#{$i}) {
+    left: (2*$i - 1)* $r;
+    animation-delay: 100ms * $i;
+  }
+}
+
+@keyframes down {
+  from{
+    transform: translate3d(0,-300%,0);
+  }
+  to{
+    transform: translate3d(0,0,0);
+  }
+}
+@keyframes through {
+  from{
+    transform: translate3d(-300%,0,0);
+  }
+  to{
+    transform: translate3d(0,0,0);
+  }
+}

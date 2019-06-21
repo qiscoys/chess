@@ -1,0 +1,56 @@
+$theme:orange;
+$width:200px;
+$i:1;
+.box {
+  background: #2dde59;
+
+  li {
+    width: $width;
+  }
+
+  > .son {
+    width: $width;
+  }
+
+  + div {
+    border-radius: 50%;
+  }
+
+  ~ p {
+    color: $theme;
+    background:lavenderblush;
+  }
+}
+.container{
+  width: $width;
+  height: $width;
+ &-float{
+   width: 100%;
+ }
+}
+.button{
+  border: none;
+  outline: none;
+  background: #2dde59;
+  &-scuccess{
+    background: #00c0dd
+  }
+  &-warning{
+    background: #1C2327;
+  }
+}
+@for $i from 1 through 12{
+  .col-#{$i}{
+  width: $i / 12 * 100%;
+  }
+}
+$bg:l1 l2 l3 l4;
+.l1{
+  background: url("../img/l1.png");
+}
+@each $i in $bg{
+  .#{$i}{
+    color: #00c0dd;
+    background: url("../img/#{$i}.png");
+  }
+}
